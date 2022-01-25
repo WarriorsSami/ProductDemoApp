@@ -1,0 +1,19 @@
+### Backend
+GET http://localhost:8000/api/products/backend HTTP/1.1
+Accept: application/json
+
+### Backend with search
+GET http://localhost:8000/api/products/backend?s=plac HTTP/1.1
+Accept: application/json
+
+### Backend with sort
+GET http://localhost:8000/api/products/backend?s=plac&sort=asc HTTP/1.1
+Accept: application/json
+
+### Backend with pagination
+GET http://localhost:8000/api/products/backend?page=2&items=10 HTTP/1.1
+Accept: application/json
+
+### Frontend
+GET http://localhost:8000/api/products/frontend HTTP/1.1
+Accept: application/json
