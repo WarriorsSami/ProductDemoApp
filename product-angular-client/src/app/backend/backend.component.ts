@@ -12,7 +12,7 @@ export class BackendComponent implements OnInit {
   products = [] as any;
   filter = {
     s: '',
-    sort: '',
+    sort: 'asc',
     page: 1
   };
 
