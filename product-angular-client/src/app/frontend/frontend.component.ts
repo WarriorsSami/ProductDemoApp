@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Product} from "../models/product";
+import { Filter } from '../models/filter';
 
 @Component({
   selector: 'app-frontend',
@@ -9,6 +10,7 @@ import {Product} from "../models/product";
 })
 export class FrontendComponent implements OnInit {
   products = [] as any;
+  s: string = '';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -18,5 +20,11 @@ export class FrontendComponent implements OnInit {
         this.products = products;
       }
     );
+  }
+
+  setFilters(filter: Filter): void {
+    if (filter.s) {
+      this.s = filter.s;
+    }
   }
 }

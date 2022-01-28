@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Filter } from '../models/filter';
 import {Product} from "../models/product";
 
 @Component({
@@ -8,10 +9,16 @@ import {Product} from "../models/product";
 })
 export class ProductsComponent implements OnInit {
   @Input('products') products: Product[] = [];
+  @Output('setFilters') setFilters = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {
   }
 
+  search(s: string): void {
+    this.setFilters.emit({
+      s
+    } as Filter);
+  }
 }
