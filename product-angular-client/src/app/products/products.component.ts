@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Filter } from '../models/filter';
 import {Product} from "../models/product";
 
@@ -7,18 +7,22 @@ import {Product} from "../models/product";
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
   @Input('products') products: Product[] = [];
+  @Input('filter') filter: Filter = {} as Filter;
   @Output('setFilters') setFilters = new EventEmitter();
-
-  constructor() {}
-
-  ngOnInit(): void {
-  }
 
   search(s: string): void {
     this.setFilters.emit({
+      ...this.filter,
       s
+    } as Filter);
+  }
+
+  sort(sort: string): void {
+    this.setFilters.emit({
+      ...this.filter,
+      sort
     } as Filter);
   }
 }

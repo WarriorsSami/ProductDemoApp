@@ -11,7 +11,8 @@ import { Filter } from '../models/filter';
 export class BackendComponent implements OnInit {
   products = [] as any;
   filter = {
-    s: ''
+    s: '',
+    sort: ''
   };
 
   constructor(private httpClient: HttpClient) {}
@@ -21,10 +22,15 @@ export class BackendComponent implements OnInit {
   }
 
   load(filter: Filter): void {
+    this.filter = filter;
     let params = new HttpParams();
 
     if (filter.s) {
       params = params.set('s', filter.s);
+    }
+
+    if (filter.sort) {
+      params = params.set('sort', filter.sort);
     }
 
     this.httpClient.get('http://localhost:8000/api/products/backend', {
