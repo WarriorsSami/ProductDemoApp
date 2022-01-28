@@ -10,7 +10,9 @@ export class SortPipe implements PipeTransform {
   transform(products: Product[], sort: string): Product[] {
     let comparator = (sort === 'asc') 
         ? (a: Product, b: Product) => a.price - b.price 
-        : (a: Product, b: Product) => b.price - a.price;
+        : (sort === 'desc') 
+            ? (a: Product, b: Product) => b.price - a.price 
+            : (_a: Product, _b: Product) => 0;
     return products.sort(comparator);
   }
 

@@ -11,10 +11,11 @@ import { Filter } from '../models/filter';
 export class BackendComponent implements OnInit {
   products = [] as any;
   filter = {
-    s: '',
+    pattern: '',
     sort: 'asc',
     page: 1
   };
+  lastPage = 0;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -26,8 +27,8 @@ export class BackendComponent implements OnInit {
     this.filter = filter;
     let params = new HttpParams();
 
-    if (filter.s) {
-      params = params.set('s', filter.s);
+    if (filter.pattern) {
+      params = params.set('s', filter.pattern);
     }
 
     if (filter.sort) {
@@ -47,6 +48,7 @@ export class BackendComponent implements OnInit {
         this.products = filter.page === 1
             ? response.data
             : [...this.products, ...response.data];
+        this.lastPage = response.last_page;
       }
     );
   }

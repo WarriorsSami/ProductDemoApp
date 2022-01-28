@@ -6,10 +6,10 @@ import { Product } from '../models/product';
   pure: true
 })
 export class PaginatePipe implements PipeTransform {
-  perPage = 8;
+  public static perPage = 8;
 
   transform(products: Product[], page: number): Product[] {
-    return products.slice(0, page * this.perPage);
+    return products.slice(0, page * PaginatePipe.perPage);
   }
 
 }

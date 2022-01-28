@@ -10,12 +10,14 @@ import {Product} from "../models/product";
 export class ProductsComponent {
   @Input('products') products: Product[] = [];
   @Input('filter') filter: Filter = {} as Filter;
+  @Input('lastPage') lastPage: number = 0;
+
   @Output('setFilters') setFilters = new EventEmitter();
 
   search(s: string): void {
     this.setFilters.emit({
       ...this.filter,
-      s,
+      pattern: s,
       page: 1
     } as Filter);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Product} from "../models/product";
+import { PaginatePipe } from '../pipes/paginate.pipe';
 import { Filter } from '../models/filter';
 
 @Component({
@@ -11,7 +12,7 @@ import { Filter } from '../models/filter';
 export class FrontendComponent implements OnInit {
   products = [] as any;
   filter = {
-    s: '',
+    pattern: '',
     sort: 'asc',
     page: 1
   };
@@ -24,5 +25,13 @@ export class FrontendComponent implements OnInit {
         this.products = products;
       }
     );
+  }
+
+  setFilters(filter: Filter): void {
+    this.filter = filter;
+  }
+
+  lastPage(products: Product[]): number {
+    return Math.ceil(products.length / PaginatePipe.perPage);
   }
 }
