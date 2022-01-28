@@ -8,6 +8,7 @@ import { BackendComponent } from './backend/backend.component';
 import { ProductsComponent } from './products/products.component';
 import {HttpClientModule} from "@angular/common/http";
 import { SearchPipe } from './pipes/search.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SearchPipe } from './pipes/search.pipe';
     FrontendComponent,
     BackendComponent,
     ProductsComponent,
-    SearchPipe
+    SearchPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

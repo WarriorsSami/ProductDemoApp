@@ -10,7 +10,10 @@ import { Filter } from '../models/filter';
 })
 export class FrontendComponent implements OnInit {
   products = [] as any;
-  s: string = '';
+  filter = {
+    s: '',
+    sort: ''
+  };
 
   constructor(private httpClient: HttpClient) {}
 
@@ -20,11 +23,5 @@ export class FrontendComponent implements OnInit {
         this.products = products;
       }
     );
-  }
-
-  setFilters(filter: Filter): void {
-    if (filter.s) {
-      this.s = filter.s;
-    }
   }
 }

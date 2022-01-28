@@ -1,1 +1,5 @@
-<app-products class="grid lg:grid-cols-4 gap-4" [products]="products | search: s" (setFilters)="setFilters($event)"></app-products>
+<app-products class="grid lg:grid-cols-4 gap-4" 
+    [products]="products | search: filter.s | sort: filter.sort"
+    (setFilters)="filter = $event"
+    [filter]="filter"
+></app-products>
