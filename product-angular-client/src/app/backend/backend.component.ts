@@ -12,7 +12,8 @@ export class BackendComponent implements OnInit {
   products = [] as any;
   filter = {
     s: '',
-    sort: ''
+    sort: '',
+    page: 1
   };
 
   constructor(private httpClient: HttpClient) {}
@@ -30,14 +31,22 @@ export class BackendComponent implements OnInit {
     }
 
     if (filter.sort) {
-      params = params.set('sort', filter.sort);
+      if (filter.sort === 'asc' || filter.sort === 'desc') {
+        params = params.set('sort', filter.sort);
+      }
+    }
+
+    if (filter.page) {
+      params = params.set('page', filter.page.toString());
     }
 
     this.httpClient.get('http://localhost:8000/api/products/backend', {
       params
     }).subscribe(
       (response: any) => {
-        this.products = response.data;
+        this.products = filter.page === 1
+            ? response.data
+            : [...this.products, ...response.data];
       }
     );
   }

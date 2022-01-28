@@ -33,7 +33,7 @@ export class ProductController {
     }
 
     const page: number = parseInt(req.query.page as any) || 1;
-    const limit: number = parseInt(req.query.items as any) || 9;
+    const limit: number = parseInt(req.query.items as any) || 8;
     const total = await this.productService.count(options);
 
     const data = await query

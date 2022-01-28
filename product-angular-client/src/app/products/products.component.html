@@ -7,14 +7,16 @@
     <input type="text" name="name" placeholder="Search"
         class="w-full py-2 border-b-2 border-blue-400 outline-none focus:border-green-400"
         (keyup)="search($any($event.target).value)">
-    <div class="absolute inset-y-0 right-0 flex items-center">
-      <select id="sorting" name="sorting" 
-        class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
-        (change)="sort($any($event.target).value)">
-        <option>Select</option>
-        <option value="asc">Price Ascending</option>
-        <option value="desc">Price Descending</option>
-      </select>
+    <div class="flex -mr-px">
+      <span class="flex items-center leading-normal bg-grey-lighter rounded rounded-l-none border border-l-0 border-grey-light px-3 whitespace-no-wrap text-grey-dark text-sm">
+        <select id="sorting" name="sorting"
+          class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+          (change)="sort($any($event.target).value)">
+          <option selected>Select</option>
+          <option value="asc">Price Ascending</option>
+          <option value="desc">Price Descending</option>
+        </select>
+      </span>
     </div>
 </div>
 
@@ -31,4 +33,12 @@
       <div class="font-extrabold">Price: ${{product.price}}</div>
     </div>
   </div>
+</div>
+
+<div class="sticky text-xl mt-auto mr-auto bottom-5 rounded-lg px-5">
+  <button type="button" 
+    class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2"
+    (click)="loadMore()">
+    <span class="font-extrabold">Load More</span>
+  </button>
 </div>

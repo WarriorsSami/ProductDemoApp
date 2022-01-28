@@ -15,14 +15,23 @@ export class ProductsComponent {
   search(s: string): void {
     this.setFilters.emit({
       ...this.filter,
-      s
+      s,
+      page: 1
     } as Filter);
   }
 
   sort(sort: string): void {
     this.setFilters.emit({
       ...this.filter,
-      sort
+      sort,
+      page: 1
+    } as Filter);
+  }
+
+  loadMore(): void {
+    this.setFilters.emit({
+      ...this.filter,
+      page: this.filter.page + 1
     } as Filter);
   }
 }

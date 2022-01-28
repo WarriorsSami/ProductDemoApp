@@ -12,7 +12,8 @@ export class FrontendComponent implements OnInit {
   products = [] as any;
   filter = {
     s: '',
-    sort: ''
+    sort: '',
+    page: 1
   };
 
   constructor(private httpClient: HttpClient) {}
