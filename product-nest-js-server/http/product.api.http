@@ -7,7 +7,7 @@ GET http://localhost:8000/api/products/backend?s=plac HTTP/1.1
 Accept: application/json
 
 ### Backend with sort
-GET http://localhost:8000/api/products/backend?s=plac&sort=asc HTTP/1.1
+GET http://localhost:8000/api/products/backend?sort=asc HTTP/1.1
 Accept: application/json
 
 ### Backend with pagination
